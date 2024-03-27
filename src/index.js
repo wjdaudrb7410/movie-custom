@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Router } from "./Router";
-import { Reset } from "styled-reset";
+import { GlobalStyled } from "./components/GlobalStyle";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Reset />
+    <GlobalStyled />
     <Router />
   </React.StrictMode>
 );

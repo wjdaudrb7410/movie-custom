@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { NowPlaying } from "../api/api";
 import styled from "styled-components";
 import { useInterval } from "../function/useInterval";
-const IMG_URL_500 = "https://image.tmdb.org/t/p/original/";
+import { IMG_URL_ } from "../data/url";
+
 const Bg = styled.div`
   width: 100vw;
   height: 600px;
-  background: url(${IMG_URL_500}${(props) => props.$bgUrl}) no-repeat center /
+  background: url(${IMG_URL_}${(props) => props.$bgUrl}) no-repeat center /
     cover;
   @media screen and (max-width: 640px) {
     height: 280px;
@@ -34,5 +35,13 @@ export const Home = () => {
     }
   }, 3000);
   const me = "";
-  return <>{data && <Bg $bgUrl={data[index].backdrop_path}></Bg>}</>;
+  return (
+    <>
+      {data && (
+        <Bg $bgUrl={data[index].backdrop_path}>
+          <div>{data[index].title}</div>
+        </Bg>
+      )}
+    </>
+  );
 };
