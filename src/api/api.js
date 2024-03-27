@@ -3,6 +3,7 @@ const Service = {
   NowPlaying: "movie/now_playing",
   TopRated: "movie/top_rated",
   Popular: "movie/popular",
+  Search: "search/movie?query=",
 };
 const Base_url = "https://api.themoviedb.org/3/";
 const lang = "ko-kr";
@@ -31,4 +32,8 @@ export const TopRated = () => {
 };
 export const Popular = () => {
   return fetch(url(Service.Popular), options).then((res) => res.json());
+};
+export const Search = (Keyword) => {
+  const searchUrl = Base_url + `${Service.Search}${Keyword}`;
+  return fetch(url());
 };
