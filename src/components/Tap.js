@@ -16,10 +16,8 @@ const TapButton = styled.button`
   width: 32%;
   border: none;
   padding: 10px 20px;
-  background-color: ${({ "data-active": dataActive }) =>
-    dataActive === "true" ? "#f0ece3" : "transparent"};
-  color: ${({ "data-active": dataActive }) =>
-    dataActive === "true" ? "black" : "grey"};
+  background-color: ${(props) => (props.$isActive ? "#f0ece3" : "transparent")};
+  color: ${(props) => (props.$isActive ? "black" : "grey")};
   cursor: pointer;
 `;
 const TapContent = styled.div`
@@ -40,7 +38,7 @@ export const Tap = () => {
           {TapData.map((tap) => (
             <TapButton
               key={tap.id}
-              data-active={activeTap === tap.id ? "true" : "false"}
+              $isActive={activeTap === tap.id ? true : false}
               onClick={() => setActiveTap(tap.id)}
             >
               {tap.button}

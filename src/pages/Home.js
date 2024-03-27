@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NowPlaying } from "../api/api";
+import { NowPlaying, Popular, TopRated } from "../api/api";
 import styled from "styled-components";
 import { useInterval } from "../function/useInterval";
 import { IMG_URL_ } from "../data/url";
@@ -8,6 +8,8 @@ import { Tap } from "../components/Tap";
 const Bg = styled.div`
   width: 100vw;
   height: 600px;
+  display: table-cell;
+  vertical-align: bottom;
   background: url(${IMG_URL_}${(props) => props.$bgUrl}) no-repeat center /
     cover;
   @media screen and (max-width: 640px) {
@@ -17,15 +19,30 @@ const Bg = styled.div`
     height: 160px;
   }
 `;
-
+const MovieTitle = styled.div`
+  font-weight: 700;
+`;
 export const Home = () => {
   const [data, SetData] = useState();
+  const [TrData, SetTrData] = useState();
+  const [PopData, setPopData] = useState();
   const [index, SetIndex] = useState(0);
 
   useEffect(() => {
     (async () => {
-      const result = await NowPlaying();
-      SetData(result.results);
+      try {
+        const NowP = await NowPlaying();
+        const MostR = await TopRated();
+        const PopM = await Popular();
+        SetData(NowP.results);
+        SetTrData(MostR.results);
+        setPopData(PopM);
+        console.log(MostR);
+        console.log(PopM);
+      } catch (err) {
+        console.log(err);
+        alert(err);
+      }
     })();
   }, []);
   useInterval(() => {
@@ -34,16 +51,17 @@ export const Home = () => {
     } else {
       SetIndex(0);
     }
-  }, 3000);
-  const me = "";
+  }, 4000);
+
   return (
     <>
       {data && (
         <Bg $bgUrl={data[index].backdrop_path}>
-          <div>{data[index].title}</div>
+          <MovieTitle>{data[index].title}</MovieTitle>
         </Bg>
       )}
       <Tap></Tap>
+      {TrData && <div>{TrData.length}</div>}
     </>
   );
 };
