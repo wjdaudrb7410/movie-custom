@@ -3,6 +3,7 @@ import { NowPlaying } from "../api/api";
 import styled from "styled-components";
 import { useInterval } from "../function/useInterval";
 import { IMG_URL_ } from "../data/url";
+import { Tap } from "../components/Tap";
 
 const Bg = styled.div`
   width: 100vw;
@@ -42,6 +43,7 @@ export const Home = () => {
           <div>{data[index].title}</div>
         </Bg>
       )}
+      <Tap></Tap>
     </>
   );
 };
