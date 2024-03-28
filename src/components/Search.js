@@ -22,7 +22,7 @@ export const Search = () => {
   } = useForm();
   const onSubmit = async (data) => {
     console.log({ data });
-    const search = data;
+    const search = data.MovieName;
     try {
       const result = await SearchThing(search);
       SetSrcData(result);
