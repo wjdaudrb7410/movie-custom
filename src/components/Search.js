@@ -12,7 +12,11 @@ const SrchForm = styled.form`
   width: 400px;
   margin: auto;
 `;
-
+const ErrText = styled.p`
+  color: crimson;
+  font-weight: 300;
+  border-bottom: 1px solid grey;
+`;
 export const Search = () => {
   const [SrcData, SetSrcData] = useState();
   const {
@@ -42,7 +46,7 @@ export const Search = () => {
             required: "영화제목을 입력해주세요",
           })}
         ></SrchBar>
-        <p>{errors?.MovieName?.message}</p>
+        <ErrText>{errors?.MovieName?.message}</ErrText>
         {SrcData &&
           SrcData.results.map((data) => <div key={data.id}>{data.title}</div>)}
       </SrchForm>

@@ -31,7 +31,7 @@ export const MainBanner = ({ Data }) => {
     } else {
       SetIndex(0);
     }
-  }, 4000);
+  }, 5000);
   return (
     <Bg $bgUrl={Data.results[index].backdrop_path}>
       <MovieTitle>{Data.results[index].title}</MovieTitle>

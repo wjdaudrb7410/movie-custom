@@ -7,7 +7,9 @@ import { Tap } from "../../components/Tap";
 import { MainBanner } from "./MainBanner";
 import { Search } from "../../components/Search";
 
-const ConWrap = styled.div``;
+const ConWrap = styled.div`
+  width: 100vw;
+`;
 
 export const Home = () => {
   const [data, SetData] = useState();
