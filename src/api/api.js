@@ -7,9 +7,9 @@ const Service = {
   Search: "search/movie?query=",
 };
 const Base_url = "https://api.themoviedb.org/3/";
-const lang = "ko-kr";
+const lang = "language=ko-kr";
 const url = (service_name) => {
-  return Base_url + `${service_name}?language=${lang}`;
+  return Base_url + `${service_name}?${lang}`;
 };
 
 const options = {
@@ -37,7 +37,7 @@ export const Popular = () => {
 export const Upcoming = () => {
   return fetch(url(Service.Upcoming), options).then((res) => res.json());
 };
-export const Search = (Keyword) => {
-  const searchUrl = Base_url + `${Service.Search}${Keyword}`;
-  return fetch(url());
+export const SearchThing = (Keyword) => {
+  const searchUrl = Base_url + `${Service.Search}${Keyword}&${lang}`;
+  return fetch(searchUrl, options).then((res) => res.json());
 };

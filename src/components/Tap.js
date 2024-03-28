@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 const TapWrap = styled.div`
+  margin-top: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
