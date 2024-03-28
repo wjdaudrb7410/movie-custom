@@ -39,6 +39,7 @@ export const Tap = ({ Data }) => {
     const temp = TapData.filter((Td) => Td.id === activeTap);
     console.log(temp);
     SetResult(temp);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTap]);
   return (
     <>
