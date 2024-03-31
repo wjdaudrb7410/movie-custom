@@ -5,6 +5,7 @@ import { routes } from "./routes";
 import { Detail } from "./pages/detail/Detail";
 import { Header } from "./components/Header";
 import { FoulAccess } from "./pages/404/FoulAccess";
+import { Footer } from "./components/Footer";
 
 export const Router = () => {
   return (
@@ -15,6 +16,7 @@ export const Router = () => {
         <Route path={routes.detail} element={<Detail />} />
         <Route path={routes.FoF} element={<FoulAccess />} />
       </Routes>
+      <Footer />
     </HashRouter>
   );
 };

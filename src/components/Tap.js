@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
+
 import styled from "styled-components";
+
+import { IMG_URL_500 } from "../data/url";
+import { MovieEle } from "./MovEle";
 const TapWrap = styled.div`
   margin-top: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 9.375rem;
+  height: 1000px;
   padding: 0 7.5rem;
 `;
 const TapBox = styled.div`
-  display: table-cell;
   width: 440px;
+  height: 700px;
   display: block;
 `;
 const TapButton = styled.button`
@@ -25,6 +29,26 @@ const TapContent = styled.div`
   border-bottom: 1px solid #ccc;
   padding: 10px;
 `;
+
+const Params = {
+  slidesPerView: 3,
+  spaceBetween: 30,
+  centeredSlides: true,
+  breakpoints: {
+    1024: {
+      slidesPerView: 5.2,
+      spaceBetween: 20,
+    },
+    640: {
+      slidesPerView: 3,
+      spaceBetween: 20,
+    },
+    480: {
+      slidesPerView: 3,
+      spaceBetween: 15,
+    },
+  },
+};
 
 export const Tap = ({ Data }) => {
   console.log(Data);
@@ -54,10 +78,7 @@ export const Tap = ({ Data }) => {
               {tap.button}
             </TapButton>
           ))}
-          {result &&
-            result[0].content.map((rsl) => (
-              <TapContent key={rsl.id}>{rsl.title}</TapContent>
-            ))}
+          {result && <MovieEle movieData={result[0].content} />}
         </TapBox>
       </TapWrap>
     </>

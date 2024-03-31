@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { SearchThing } from "../api/api";
 import styled from "styled-components";
+import { Loading } from "./Loading";
+import { MovieEle } from "./MovEle";
 const SrchBar = styled.input`
   border-radius: 20px;
   width: 100%;
@@ -19,6 +21,7 @@ const ErrText = styled.p`
 `;
 export const Search = () => {
   const [SrcData, SetSrcData] = useState();
+  const [loading, isLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -30,6 +33,7 @@ export const Search = () => {
     try {
       const result = await SearchThing(search);
       SetSrcData(result);
+      isLoading(true);
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -47,8 +51,8 @@ export const Search = () => {
           })}
         ></SrchBar>
         <ErrText>{errors?.MovieName?.message}</ErrText>
-        {SrcData &&
-          SrcData.results.map((data) => <div key={data.id}>{data.title}</div>)}
+
+        {SrcData && <MovieEle movieData={SrcData.results}></MovieEle>}
       </SrchForm>
     </>
   );

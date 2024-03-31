@@ -6,8 +6,10 @@ import styled from "styled-components";
 import { Tap } from "../../components/Tap";
 import { MainBanner } from "./MainBanner";
 import { Search } from "../../components/Search";
+import { Loading } from "../../components/Loading";
 
 const ConWrap = styled.div`
+  height: 1500px;
   width: 100vw;
 `;
 
@@ -16,6 +18,7 @@ export const Home = () => {
   const [TrData, SetTrData] = useState();
   const [PopData, setPopData] = useState();
   const [UpData, setUpData] = useState();
+  const [loading, isLoading] = useState(false);
   useEffect(() => {
     (async () => {
       try {
@@ -27,6 +30,7 @@ export const Home = () => {
         SetTrData(MostR);
         setPopData(PopM);
         setUpData(UpcM);
+        isLoading(true);
         console.log(MostR);
         console.log(PopM);
       } catch (err) {
@@ -38,12 +42,16 @@ export const Home = () => {
 
   return (
     <>
-      {data && (
-        <ConWrap>
-          <MainBanner Data={data} />
-          <Search />
-          <Tap Data={{ UpData, TrData, PopData }} />
-        </ConWrap>
+      {loading ? (
+        data && (
+          <ConWrap>
+            <MainBanner Data={data} />
+            <Search />
+            <Tap Data={{ UpData, TrData, PopData }} />
+          </ConWrap>
+        )
+      ) : (
+        <Loading></Loading>
       )}
     </>
   );
