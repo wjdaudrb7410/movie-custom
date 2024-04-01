@@ -17,7 +17,7 @@ const Bg = styled.section`
 `;
 
 const MovieTitle = styled.div`
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   font-size: 40px;
   font-weight: 700;
 `;
@@ -47,6 +47,7 @@ export const MainBanner = ({ Data }) => {
         {Data.results.map((Data) => (
           <SwiperSlide key={Data.id}>
             <img src={`${IMG_URL_}${Data.backdrop_path}`}></img>
+            <MovieTitle>{Data.title}</MovieTitle>
           </SwiperSlide>
         ))}
       </Swiper>

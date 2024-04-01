@@ -1,3 +1,9 @@
+import { HelmetTitle } from "../../components/HelmeTitle";
+
 export const FoulAccess = () => {
-  return <>404페이지 입니다</>;
+  return (
+    <>
+      <HelmetTitle title={"404"} />
+    </>
+  );
 };

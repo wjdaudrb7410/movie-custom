@@ -41,3 +41,7 @@ export const SearchThing = (Keyword) => {
   const searchUrl = Base_url + `${Service.Search}${Keyword}&${lang}`;
   return fetch(searchUrl, options).then((res) => res.json());
 };
+export const MovDetail = (id) => {
+  const detailUrl = Base_url + `movie/${id}?${lang}`;
+  return fetch(detailUrl, options).then((res) => res.json());
+};

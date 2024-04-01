@@ -7,6 +7,7 @@ import { Tap } from "../../components/Tap";
 import { MainBanner } from "./MainBanner";
 import { Search } from "../../components/Search";
 import { Loading } from "../../components/Loading";
+import { HelmetTitle } from "../../components/HelmeTitle";
 
 const ConWrap = styled.div`
   height: 1500px;
@@ -45,6 +46,7 @@ export const Home = () => {
       {loading ? (
         data && (
           <ConWrap>
+            <HelmetTitle title={"Home"} />
             <MainBanner Data={data} />
             <Search />
             <Tap Data={{ UpData, TrData, PopData }} />

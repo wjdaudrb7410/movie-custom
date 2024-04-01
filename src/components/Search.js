@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { SearchThing } from "../api/api";
 import styled from "styled-components";
-import { Loading } from "./Loading";
 import { MovieEle } from "./MovEle";
 const SrchBar = styled.input`
   border-radius: 20px;
