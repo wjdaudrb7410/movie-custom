@@ -11,6 +11,7 @@ const HeaderWrap = styled.header`
   left: 0;
   bottom: 0;
   backdrop-filter: blur(3px);
+  z-index: 10;
 `;
 const MainTitle = styled.div`
   color: cadetblue;

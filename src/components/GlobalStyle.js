@@ -13,7 +13,7 @@ export const spacing = {
 export const GlobalStyled = createGlobalStyle`
       ${reset}
   
-      *{box-sizing:border-box;}
+      
   
       body{
           font-family: "Noto Sans KR", sans-serif;
@@ -30,4 +30,7 @@ export const GlobalStyled = createGlobalStyle`
           width: 100%;
           display: block;
       }
+      .swiper-wrapper {
+    display: -webkit-inline-box;
+  }
   `;
