@@ -27,6 +27,7 @@ export const Content = ({ Data }) => {
           <div key={gen.id}>{gen.name}</div>
         ))}
         <div>평점 : {Math.round(Data.vote_average)}점</div>
+        <div>줄거리:{Data.overview.slice(0, 80)}...</div>
       </Desc>
     </ConWrap>
   );

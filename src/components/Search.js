@@ -3,16 +3,18 @@ import { useForm } from "react-hook-form";
 import { SearchThing } from "../api/api";
 import styled from "styled-components";
 import { MovieEle } from "./MovEle";
-const SrchBar = styled.input`
-  border-radius: 20px;
-  width: 100%;
-  height: 100%;
-`;
 const SrchForm = styled.form`
-  height: 30px;
-  width: 400px;
-  margin: auto;
+  overflow: hidden;
+  height: 100%;
+  width: 25%;
 `;
+const SrchBar = styled.input`
+  font-size: 28px;
+  border-radius: 20px;
+  width: 91%;
+  height: 30px;
+`;
+
 const ErrText = styled.p`
   color: crimson;
   font-weight: 300;

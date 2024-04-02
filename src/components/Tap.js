@@ -4,51 +4,31 @@ import styled from "styled-components";
 
 import { IMG_URL_500 } from "../data/url";
 import { MovieEle } from "./MovEle";
-const TapWrap = styled.div`
-  margin-top: 350px;
+const CatSection = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 1000px;
-  padding: 0 7.5rem;
+  width: 100vw;
+  height: 500px;
 `;
+const ButtonSection = styled.div``;
 const TapBox = styled.div`
-  width: 440px;
-  height: 700px;
-  display: block;
+  width: 100vw;
+  height: 500px;
+  display: flex;
 `;
 const TapButton = styled.button`
-  width: 32%;
+  display: block;
+  width: 100px;
+  height: 10%;
   border: none;
-  padding: 10px 20px;
+  padding: 0 7px;
   background-color: ${(props) => (props.$isActive ? "#f0ece3" : "transparent")};
   color: ${(props) => (props.$isActive ? "black" : "grey")};
   cursor: pointer;
 `;
-const TapContent = styled.div`
-  border-bottom: 1px solid #ccc;
-  padding: 10px;
+const Catalogue = styled.div`
+  width: 100%;
+  border: 1px solid black;
 `;
-
-const Params = {
-  slidesPerView: 3,
-  spaceBetween: 30,
-  centeredSlides: true,
-  breakpoints: {
-    1024: {
-      slidesPerView: 5.2,
-      spaceBetween: 20,
-    },
-    640: {
-      slidesPerView: 3,
-      spaceBetween: 20,
-    },
-    480: {
-      slidesPerView: 3,
-      spaceBetween: 15,
-    },
-  },
-};
 
 export const Tap = ({ Data }) => {
   console.log(Data);
@@ -67,7 +47,30 @@ export const Tap = ({ Data }) => {
   }, [activeTap]);
   return (
     <>
-      <TapWrap>
+      <CatSection>
+        <ButtonSection>
+          {TapData.map((tap) => (
+            <TapButton
+              key={tap.id}
+              $isActive={activeTap === tap.id ? true : false}
+              onClick={() => setActiveTap(tap.id)}
+            >
+              {tap.button}
+            </TapButton>
+          ))}
+        </ButtonSection>
+        <Catalogue>
+          {result && <MovieEle movieData={result[0].content} />}
+        </Catalogue>
+      </CatSection>
+    </>
+  );
+};
+
+{
+  /* 
+  {result && <MovieEle movieData={result[0].content} />}
+  <TapWrap>
         <TapBox>
           {TapData.map((tap) => (
             <TapButton
@@ -80,7 +83,5 @@ export const Tap = ({ Data }) => {
           ))}
           {result && <MovieEle movieData={result[0].content} />}
         </TapBox>
-      </TapWrap>
-    </>
-  );
-};
+      </TapWrap> */
+}

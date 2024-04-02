@@ -14,6 +14,22 @@ const ConWrap = styled.div`
   width: 100vw;
 `;
 
+const MainSector = styled.div`
+  width: 100vw;
+  display: flex;
+  margin-top: 60px;
+`;
+const SampleButton = styled.button`
+  border-radius: 0;
+  padding: 0 5px;
+  width: 100px;
+  display: block;
+  height: 10%;
+`;
+const Catalogue = styled.div`
+  width: 100%;
+  background-color: blue;
+`;
 export const Home = () => {
   const [data, SetData] = useState();
   const [TrData, SetTrData] = useState();
@@ -45,12 +61,14 @@ export const Home = () => {
     <>
       {loading ? (
         data && (
-          <ConWrap>
-            <HelmetTitle title={"Home"} />
-            <MainBanner Data={data} />
-            <Search />
+          <>
+            <MainSector>
+              <HelmetTitle title={"Home"} />
+              <MainBanner Data={data} />
+              <Search />
+            </MainSector>
             <Tap Data={{ UpData, TrData, PopData }} />
-          </ConWrap>
+          </>
         )
       ) : (
         <Loading></Loading>
@@ -58,3 +76,18 @@ export const Home = () => {
     </>
   );
 };
+
+// <MainSector>
+//   <MainBannerArea $bCol="blue" $wCol="75%"></MainBannerArea>
+//   <MainBannerArea $bCol="red" $wCol="25%"></MainBannerArea>
+// </MainSector>
+// <div>카탈로그 구간입니다</div>
+// <CatSection>
+//   <ButtonSection>
+//     <SampleButton>상영중인 영화</SampleButton>
+//     <SampleButton>최신 영화</SampleButton>
+//     <SampleButton>상영중인 영화</SampleButton>
+//     <SampleButton>상영중인 영화</SampleButton>
+//   </ButtonSection>
+//   <Catalogue></Catalogue>
+// </CatSection>

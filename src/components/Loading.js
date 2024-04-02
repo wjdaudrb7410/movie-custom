@@ -6,8 +6,8 @@ const Params = {
 };
 const LoaderWrap = styled.div`
   align-self: center;
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 100vh;
   justify-content: center;
   text-align: center;
 `;

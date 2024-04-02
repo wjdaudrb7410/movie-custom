@@ -2,35 +2,40 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { IMG_URL_500 } from "../data/url";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 
 const MovieJacket = styled.div`
-  height: 300px;
+  width: 150px;
+  height: 250px;
   background: url(${IMG_URL_500}${(props) => props.$bgUrl}) no-repeat
     center/cover;
 `;
 const params = {
-  slidesPerView: 5.2,
-  spaceBetween: 20,
+  slidesPerView: 3,
+  centeredSlides: true,
+  spaceBetween: 150,
+
   breakpoints: {
     1024: {
-      slidesPerView: 5.2,
-      spaceBetween: 20,
+      slidesPerView: 3,
     },
     640: {
-      slidesPerView: 4.2,
-      spaceBetween: 15,
+      slidesPerView: 2,
     },
     320: {
-      slidesPerView: 3.2,
-      spaceBetween: 10,
+      slidesPerView: 2,
     },
   },
 };
 
-export const MovieEle = ({ movieData }) => {
+export const MovieEle = ({ movieData, initSilde = 1 }) => {
+  const [init, SetInit] = useState(0);
+  useEffect(() => {
+    SetInit(initSilde);
+  }, []);
   return (
     <>
-      <Swiper {...params}>
+      <Swiper {...params} initialSlide={initSilde} grid={{ rows: 2 }}>
         {movieData.map((rsl) => (
           <SwiperSlide key={rsl.id}>
             <Link to={`/detail/${rsl.id}`}>
