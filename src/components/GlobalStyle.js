@@ -23,7 +23,7 @@ export const GlobalStyled = createGlobalStyle`
   
       a{
           text-decoration: none;
-          color: white;
+          color: white ${colors.point};
       }
 
       button{

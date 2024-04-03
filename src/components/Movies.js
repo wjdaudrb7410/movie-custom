@@ -4,13 +4,35 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { IMG_URL_500 } from "../data/url";
 import { Link } from "react-router-dom";
 import { FaStar, FaCalendarAlt } from "react-icons/fa";
+import { colors } from "./GlobalStyle";
+const Params = {
+  slidesPerView: 5,
+
+  breakpoints: {
+    1024: {
+      slidesPerView: 5,
+    },
+    640: {
+      slidesPerView: 3,
+    },
+    400: {
+      slidesPerView: 3,
+    },
+  },
+  loop: "true",
+};
 const Poster_col = {
-  Main: "#000066",
+  Main: "white",
 };
 const ConWrap = styled.div`
+  margin: 10px 0;
   width: 100vw;
 `;
+const JackWrap = styled.div`
+  margin: 20px 0;
+`;
 const TextLine = styled.div`
+  font-weight: 500;
   font-size: 40px;
 `;
 const Jacket = styled.div`
@@ -38,12 +60,13 @@ const Cover = styled.div`
   }
 `;
 const Titles = styled.div`
-  font-weight: 900;
+  padding: 0 10px;
+  font-weight: 700;
   color: ${Poster_col.Main};
-  align-self: center;
-  position: absolute;
-  bottom: 40%;
-  z-index: 20;
+  position: relative;
+  bottom: -17%;
+
+  z-index: 2;
 `;
 const Shuffle = (array) => {
   array.sort(() => Math.random() - 0.5);
@@ -56,26 +79,28 @@ export const Movies = ({ Data, Texts }) => {
   return (
     <ConWrap>
       <TextLine>{Texts}</TextLine>
-      <Swiper loop="true">
-        {Data.map((rsl) => (
-          <SwiperSlide key={rsl.id}>
-            <Link to={`/detail/${rsl.id}`}>
-              <Jacket $bgUrl={rsl.poster_path}>
-                <Titles>{rsl.title}</Titles>
-                <Cover>
-                  <div>
-                    <FaStar />:{Math.round(rsl.vote_average)}
-                  </div>
-                  <div>
-                    <FaCalendarAlt />
-                    {rsl.release_date}
-                  </div>
-                </Cover>
-              </Jacket>
-            </Link>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <JackWrap>
+        <Swiper {...Params}>
+          {Data.map((rsl) => (
+            <SwiperSlide key={rsl.id}>
+              <Link to={`/detail/${rsl.id}`}>
+                <Jacket $bgUrl={rsl.poster_path}>
+                  <Titles>{rsl.title}</Titles>
+                  <Cover>
+                    <div>
+                      <FaStar />:{Math.round(rsl.vote_average)}
+                    </div>
+                    <div>
+                      <FaCalendarAlt />
+                      {rsl.release_date}
+                    </div>
+                  </Cover>
+                </Jacket>
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </JackWrap>
     </ConWrap>
   );
 };
