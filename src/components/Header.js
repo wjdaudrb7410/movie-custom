@@ -25,7 +25,7 @@ const MainTitle = styled.div`
   margin-top: 5px;
   margin-left: 20px;
   color: black;
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 700;
 `;
 const HeaderBtn = styled.button`

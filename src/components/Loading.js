@@ -5,7 +5,7 @@ const Params = {
   size: 20,
 };
 const LoaderWrap = styled.div`
-  position: absolute;
+  position: relative;
   width: 100vw;
   height: 100vh;
   top: 0;

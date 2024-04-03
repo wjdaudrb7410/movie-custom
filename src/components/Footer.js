@@ -4,7 +4,7 @@ import { FootH } from "./GlobalStyle";
 export const FooterWrap = styled.footer`
   height: ${FootH.hegiht};
   position: relative;
-  background-color: black;
+  background-color: white;
 `;
 export const Footer = () => {
   return <FooterWrap>푸터</FooterWrap>;
