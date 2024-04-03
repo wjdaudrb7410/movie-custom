@@ -13,8 +13,8 @@ const MovieJacket = styled.div`
 const params = {
   slidesPerView: 3,
   centeredSlides: true,
-  spaceBetween: 150,
-
+  slidesPerView: 150,
+  loop: "true",
   breakpoints: {
     1024: {
       slidesPerView: 3,
@@ -28,11 +28,7 @@ const params = {
   },
 };
 
-export const MovieEle = ({ movieData, initSilde = 1 }) => {
-  const [init, SetInit] = useState(0);
-  useEffect(() => {
-    SetInit(initSilde);
-  }, []);
+export const MovieEle = ({ movieData, initSilde = 2 }) => {
   return (
     <>
       <Swiper {...params} initialSlide={initSilde} grid={{ rows: 2 }}>

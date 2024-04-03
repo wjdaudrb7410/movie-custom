@@ -2,12 +2,12 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 export const colors = {
-  point: "#e50914",
+  point: "#fe3232",
+  btnPoint: "#3b3535",
 };
 
-export const spacing = {
-  padding_640: "50px",
-  padding_450: "20px",
+export const FootH = {
+  hegiht: "100px",
 };
 
 export const GlobalStyled = createGlobalStyle`
@@ -16,8 +16,8 @@ export const GlobalStyled = createGlobalStyle`
       
   
       body{
-          font-family: "Noto Sans KR", sans-serif;
-          color: mediumturquoise;
+        font-family: "NotoSans-KR",sans-serif;
+          color: black;
           letter-spacing: -1px;
       }
   
@@ -25,7 +25,16 @@ export const GlobalStyled = createGlobalStyle`
           text-decoration: none;
           color: white;
       }
-  
+
+      button{
+        border: 2px solid ${colors.btnPoint};
+        color: ${colors.btnPoint};
+        cursor: pointer;
+        &:hover {
+    border: 2px solid ${colors.point};
+    color: red;
+  }
+      }
       img{
           width: 100%;
           display: block;

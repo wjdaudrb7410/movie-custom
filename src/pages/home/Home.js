@@ -3,33 +3,18 @@ import { useEffect, useState } from "react";
 import { NowPlaying, Popular, TopRated, Upcoming } from "../../api/api";
 import styled from "styled-components";
 
-import { Tap } from "../../components/Tap";
 import { MainBanner } from "./MainBanner";
-import { Search } from "../../components/Search";
 import { Loading } from "../../components/Loading";
 import { HelmetTitle } from "../../components/HelmeTitle";
-
-const ConWrap = styled.div`
-  height: 1500px;
-  width: 100vw;
-`;
+import { Movies } from "../../components/Movies";
 
 const MainSector = styled.div`
   width: 100vw;
   display: flex;
+  flex-wrap: wrap;
   margin-top: 60px;
 `;
-const SampleButton = styled.button`
-  border-radius: 0;
-  padding: 0 5px;
-  width: 100px;
-  display: block;
-  height: 10%;
-`;
-const Catalogue = styled.div`
-  width: 100%;
-  background-color: blue;
-`;
+const Catalogue = styled.div``;
 export const Home = () => {
   const [data, SetData] = useState();
   const [TrData, SetTrData] = useState();
@@ -65,9 +50,8 @@ export const Home = () => {
             <MainSector>
               <HelmetTitle title={"Home"} />
               <MainBanner Data={data} />
-              <Search />
+              <Movies Data={TrData.results} Texts={"인기 영화"}></Movies>
             </MainSector>
-            <Tap Data={{ UpData, TrData, PopData }} />
           </>
         )
       ) : (
@@ -76,18 +60,4 @@ export const Home = () => {
     </>
   );
 };
-
-// <MainSector>
-//   <MainBannerArea $bCol="blue" $wCol="75%"></MainBannerArea>
-//   <MainBannerArea $bCol="red" $wCol="25%"></MainBannerArea>
-// </MainSector>
-// <div>카탈로그 구간입니다</div>
-// <CatSection>
-//   <ButtonSection>
-//     <SampleButton>상영중인 영화</SampleButton>
-//     <SampleButton>최신 영화</SampleButton>
-//     <SampleButton>상영중인 영화</SampleButton>
-//     <SampleButton>상영중인 영화</SampleButton>
-//   </ButtonSection>
-//   <Catalogue></Catalogue>
-// </CatSection>
+/* margin-bottom: ${//FootH.hegiht}; */

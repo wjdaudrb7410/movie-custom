@@ -5,16 +5,23 @@ const Params = {
   size: 20,
 };
 const LoaderWrap = styled.div`
-  align-self: center;
-  width: 100%;
+  position: absolute;
+  width: 100vw;
   height: 100vh;
+  top: 0;
+  left: 0;
+  background: #ffffffb7;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  text-align: center;
 `;
 const LoadingText = styled.div`
-  margin-bottom: 30px;
-  font-size: 40px;
-  font-weight: bold;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 36px;
+  text-align: center;
 `;
 export const Loading = () => {
   return (

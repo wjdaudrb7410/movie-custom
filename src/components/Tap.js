@@ -28,6 +28,7 @@ const TapButton = styled.button`
 const Catalogue = styled.div`
   width: 100%;
   border: 1px solid black;
+  overflow: hidden;
 `;
 
 export const Tap = ({ Data }) => {

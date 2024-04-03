@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import { SearchThing } from "../api/api";
 import styled from "styled-components";
 import { MovieEle } from "./MovEle";
+import { FootH } from "./GlobalStyle";
 const SrchForm = styled.form`
   overflow: hidden;
   height: 100%;
-  width: 25%;
+  width: 100%;
+  margin-bottom: ${FootH.hegiht};
 `;
 const SrchBar = styled.input`
   font-size: 28px;
@@ -31,6 +33,7 @@ export const Search = () => {
   const onSubmit = async (data) => {
     console.log({ data });
     const search = data.MovieName;
+    search.replace(" ", "");
     try {
       const result = await SearchThing(search);
       SetSrcData(result);
@@ -40,7 +43,6 @@ export const Search = () => {
       console.log(error);
     }
   };
-
   return (
     <>
       <SrchForm onSubmit={handleSubmit(onSubmit)}>
@@ -52,7 +54,6 @@ export const Search = () => {
           })}
         ></SrchBar>
         <ErrText>{errors?.MovieName?.message}</ErrText>
-
         {SrcData && <MovieEle movieData={SrcData.results}></MovieEle>}
       </SrchForm>
     </>

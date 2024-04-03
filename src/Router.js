@@ -6,7 +6,8 @@ import { Detail } from "./pages/detail/Detail";
 import { Header } from "./components/Header";
 import { FoulAccess } from "./pages/404/FoulAccess";
 import { Footer } from "./components/Footer";
-
+import { LoginPg } from "./pages/Login/LoginPg";
+import { SearchPg } from "./pages/Search/SearchPg";
 export const Router = () => {
   return (
     <HashRouter>
@@ -14,6 +15,8 @@ export const Router = () => {
       <Routes>
         <Route path={routes.home} element={<Home />} />
         <Route path={routes.detail} element={<Detail />} />
+        <Route path={routes.search} element={<SearchPg />} />
+        <Route path={routes.login} element={<LoginPg />} />
         <Route path={routes.FoF} element={<FoulAccess />} />
       </Routes>
       <Footer />
