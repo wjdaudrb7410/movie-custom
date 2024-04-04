@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/movie-custom/static/css/main.96fcc2ce.css",
-    "main.js": "/movie-custom/static/js/main.de2475cb.js",
+    "main.js": "/movie-custom/static/js/main.794cc00e.js",
     "static/media/NotoSansKR-VariableFont_wght.ttf": "/movie-custom/static/media/NotoSansKR-VariableFont_wght.33752a94ca5252213de8.ttf",
     "index.html": "/movie-custom/index.html",
     "main.96fcc2ce.css.map": "/movie-custom/static/css/main.96fcc2ce.css.map",
-    "main.de2475cb.js.map": "/movie-custom/static/js/main.de2475cb.js.map"
+    "main.794cc00e.js.map": "/movie-custom/static/js/main.794cc00e.js.map"
   },
   "entrypoints": [
     "static/css/main.96fcc2ce.css",
-    "static/js/main.de2475cb.js"
+    "static/js/main.794cc00e.js"
   ]
 }
