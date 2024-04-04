@@ -69,7 +69,6 @@ export const Header = () => {
       <MainTitle>
         <Link to={routes.home}>Movie Custom</Link>
       </MainTitle>
-
       <div>
         <HeaderBtn>
           <Link to={"/search"}>검색</Link>

@@ -31,7 +31,7 @@ export const Content = ({ Data }) => {
       <Desc>
         <h2>{Data.title}</h2>
         <div>
-          상영시간: {Math.floor(Data.runtime / 60)}시간{Data.runtime % 60}분{" "}
+          상영시간: {Math.floor(Data.runtime / 60)}시간{Data.runtime % 60}분
         </div>
         <div>장르:</div>
         {Data.genres.map((gen) => (
