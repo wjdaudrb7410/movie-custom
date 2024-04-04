@@ -2,25 +2,39 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { SearchThing } from "../api/api";
 import styled from "styled-components";
-import { MovieEle } from "./MovEle";
-import { FootH } from "./GlobalStyle";
+import { colors } from "./GlobalStyle";
+import { Loading } from "./Loading";
+import { Jackets } from "./Jackets";
+import { Link } from "react-router-dom";
 const SrchForm = styled.form`
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
-  margin-bottom: ${FootH.hegiht};
+  position: relative;
 `;
 const SrchBar = styled.input`
   font-size: 28px;
-  border-radius: 20px;
-  width: 91%;
-  height: 30px;
+  border-radius: 18px;
+  width: 100%;
+  @media screen and (max-width: 800px) {
+    font-size: 18px;
+  }
 `;
-
+const ConWrap = styled.div`
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 30px;
+  column-gap: 10px;
+`;
 const ErrText = styled.p`
-  color: crimson;
+  color: ${colors.point};
   font-weight: 300;
   border-bottom: 1px solid grey;
+`;
+const JacketWrap = styled.div`
+  width: 200px;
+  height: 300px;
+  @media screen and (max-width: 900px) {
+    height: 200px;
+  }
 `;
 export const Search = () => {
   const [SrcData, SetSrcData] = useState();
@@ -31,13 +45,14 @@ export const Search = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
+    isLoading(true);
     console.log({ data });
     const search = data.MovieName;
     search.replace(" ", "");
     try {
       const result = await SearchThing(search);
       SetSrcData(result);
-      isLoading(true);
+      isLoading(false);
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -54,8 +69,27 @@ export const Search = () => {
           })}
         ></SrchBar>
         <ErrText>{errors?.MovieName?.message}</ErrText>
-        {SrcData && <MovieEle movieData={SrcData.results}></MovieEle>}
       </SrchForm>
+
+      {SrcData && (
+        <ConWrap>
+          {loading ? (
+            <Loading />
+          ) : (
+            <>
+              {SrcData.results.map((rsl) => (
+                <JacketWrap>
+                  <Link to={`/detail/${rsl.id}`}>
+                    <Jackets Data={rsl}></Jackets>
+                  </Link>
+                </JacketWrap>
+              ))}
+            </>
+          )}
+        </ConWrap>
+      )}
     </>
   );
 };
+
+// {SrcData && <MovieEle movieData={SrcData.results}></MovieEle>}

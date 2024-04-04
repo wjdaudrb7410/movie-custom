@@ -12,9 +12,7 @@ const MainSector = styled.div`
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 60px;
 `;
-const Catalogue = styled.div``;
 export const Home = () => {
   const [data, SetData] = useState();
   const [TrData, SetTrData] = useState();

@@ -1,25 +1,32 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { colors } from "./GlobalStyle";
 
 const ButtonDesign = styled.button`
-  font-size: 25px;
+  font-size: 20px;
   font-family: "NotoSans-KR";
   background-color: transparent;
-  padding: 10px 30px;
-  margin-left: 30px;
-  position: absolute;
-  backdrop-filter: blur(5px);
+  bottom: 270px;
+  padding: 5px 10px;
+  left: 60px;
+  position: relative;
+  backdrop-filter: blur(3px);
   border-radius: 20px;
-  bottom: 15%;
   @media screen and (max-width: 900px) {
     font-size: 15px;
     padding: 3px 2px;
   }
+  &:hover {
+    border: 2px solid ${colors.point};
+  }
 `;
 
-export const Button = ({ Text, Bbot = "" }) => {
+export const Button = ({ Text, id }) => {
   return (
     <>
-      <ButtonDesign style={{ bottom: Bbot }}>{Text}</ButtonDesign>
+      <ButtonDesign>
+        <Link to={`/detail/${id}`}>{Text}</Link>
+      </ButtonDesign>
     </>
   );
 };

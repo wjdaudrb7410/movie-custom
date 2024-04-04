@@ -4,16 +4,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { IMG_URL_500 } from "../data/url";
 import { Link } from "react-router-dom";
 import { FaStar, FaCalendarAlt } from "react-icons/fa";
-import { colors } from "./GlobalStyle";
-const Params = {
-  slidesPerView: 5,
+import { Jackets } from "./Jackets";
 
+const Params = {
+  slidesPerView: 6,
+  spaceBetween: 10,
   breakpoints: {
-    1024: {
-      slidesPerView: 5,
-    },
     640: {
-      slidesPerView: 3,
+      slidesPerView: 4,
     },
     400: {
       slidesPerView: 3,
@@ -22,51 +20,23 @@ const Params = {
   loop: "true",
 };
 const Poster_col = {
-  Main: "white",
+  Main: "red",
 };
 const ConWrap = styled.div`
-  margin: 10px 0;
+  margin: 10px 0px 0px 60px;
   width: 100vw;
 `;
 const JackWrap = styled.div`
+  overflow: hidden;
   margin: 20px 0;
+  margin-left: 25px;
 `;
 const TextLine = styled.div`
   font-weight: 500;
   font-size: 40px;
-`;
-const Jacket = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  border-radius: 10px;
-  width: 150px;
-  height: 200px;
-  overflow: hidden;
-  background: url(${IMG_URL_500}${(props) => props.$bgUrl}) no-repeat
-    center/cover;
-`;
-const Cover = styled.div`
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  width: 100%;
-  height: 50%;
-  background-color: transparent;
-  backdrop-filter: blur(10px);
-  div {
-    color: ${Poster_col.Main};
-    margin-bottom: 2px;
+  @media screen and (max-width: 900px) {
+    font-size: 22px;
   }
-`;
-const Titles = styled.div`
-  padding: 0 10px;
-  font-weight: 700;
-  color: ${Poster_col.Main};
-  position: relative;
-  bottom: -17%;
-
-  z-index: 2;
 `;
 const Shuffle = (array) => {
   array.sort(() => Math.random() - 0.5);
@@ -84,18 +54,7 @@ export const Movies = ({ Data, Texts }) => {
           {Data.map((rsl) => (
             <SwiperSlide key={rsl.id}>
               <Link to={`/detail/${rsl.id}`}>
-                <Jacket $bgUrl={rsl.poster_path}>
-                  <Titles>{rsl.title}</Titles>
-                  <Cover>
-                    <div>
-                      <FaStar />:{Math.round(rsl.vote_average)}
-                    </div>
-                    <div>
-                      <FaCalendarAlt />
-                      {rsl.release_date}
-                    </div>
-                  </Cover>
-                </Jacket>
+                <Jackets Data={rsl}></Jackets>
               </Link>
             </SwiperSlide>
           ))}
@@ -104,3 +63,17 @@ export const Movies = ({ Data, Texts }) => {
     </ConWrap>
   );
 };
+
+{
+  /* <Jacket $bgUrl={rsl.poster_path}>
+                  <Titles>{rsl.title}</Titles>
+                  <Cover>
+                    <Info>
+                      <FaStar />:{Math.round(rsl.vote_average)}
+                    </Info>
+                    <Info>
+                      <FaCalendarAlt />:{rsl.release_date}
+                    </Info>
+                  </Cover>
+                </Jacket> */
+}
