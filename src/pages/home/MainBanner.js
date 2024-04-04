@@ -6,23 +6,37 @@ import { Autoplay } from "swiper/modules";
 import { Button } from "../../components/Button";
 import { Link, useParams } from "react-router-dom";
 const Bg = styled.div`
-  width: 100%;
+  text-align: left;
+  position: relative;
+  width: 100vw;
   overflow: hidden;
 `;
-
 const MovieTitle = styled.div`
-  position: relative;
-  left: 60px;
-  bottom: 300px;
-  font-size: 48px;
+  margin-bottom: 10px;
+  font-size: 42px;
+  font-family: "NotoSans-KR", sans-serif;
+  font-display: initial;
   font-weight: 700;
   color: white;
   z-index: 3;
-  @media screen and (max-width: 1200px) {
-    font-size: 28px;
+  @media screen and (max-width: 450px) {
+    font-weight: 400;
+    font-size: 8px;
   }
 `;
-
+const Grab = styled.div`
+  align-items: flex-start;
+  position: absolute;
+  margin-left: 30px;
+  bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+  height: 40px;
+  @media screen and (max-width: 500px) {
+    bottom: 100px;
+  }
+`;
 export const MainBanner = ({ Data }) => {
   // const [index, SetIndex] = useState(0);
   // useInterval(() => {
@@ -32,7 +46,6 @@ export const MainBanner = ({ Data }) => {
   //     SetIndex(0);
   //   }
   // }, 5000);
-  const { Logged } = useParams();
   const Params = {
     slidesPerView: 1,
     effect: "fade",
@@ -52,8 +65,10 @@ export const MainBanner = ({ Data }) => {
               src={`${IMG_URL_}${Data.backdrop_path}`}
               alt={Data.title}
             ></img>
-            <MovieTitle>{Data.title}</MovieTitle>
-            <Button Text="Goto Detail" id={Data.id}></Button>
+            <Grab>
+              <MovieTitle>{Data.title}</MovieTitle>
+              <Button Text="Goto Detail" id={Data.id}></Button>
+            </Grab>
           </SwiperSlide>
         ))}
       </Swiper>

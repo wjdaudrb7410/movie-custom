@@ -10,6 +10,7 @@ import { Movies } from "../../components/Movies";
 
 const MainSector = styled.div`
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-wrap: wrap;
 `;

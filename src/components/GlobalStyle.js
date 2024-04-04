@@ -1,7 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import "swiper/css";
+
+export const icon_size = { normal: 15 };
 export const colors = {
+  black: "black",
+  white: "white",
   point: "#FF6600",
   btnPoint: "#3b3535",
 };
@@ -15,7 +18,7 @@ export const GlobalStyled = createGlobalStyle`
   
       
   *{box-sizing: border-box;
-    font-family: "NotoSans-KR",sans-serif;}
+    font-family: 'NotoSans-KR',sans-serif;}
       body{
         
           color: black;
@@ -25,7 +28,6 @@ export const GlobalStyled = createGlobalStyle`
       a{
         font-family: "NotoSans-KR",sans-serif;
           text-decoration: none;
-          color:  ${colors.point};
       }
 
       button{

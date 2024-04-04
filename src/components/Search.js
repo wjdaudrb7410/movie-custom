@@ -12,7 +12,7 @@ const SrchForm = styled.form`
 const SrchBar = styled.input`
   font-size: 28px;
   border-radius: 18px;
-  width: 100%;
+  width: 350px;
   @media screen and (max-width: 800px) {
     font-size: 18px;
   }
@@ -23,6 +23,9 @@ const ConWrap = styled.div`
   grid-template-columns: repeat(3, 1fr);
   row-gap: 30px;
   column-gap: 10px;
+  @media screen and (max-width: 500px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 const ErrText = styled.p`
   color: ${colors.point};
@@ -78,7 +81,7 @@ export const Search = () => {
           ) : (
             <>
               {SrcData.results.map((rsl) => (
-                <JacketWrap>
+                <JacketWrap key={rsl.id}>
                   <Link to={`/detail/${rsl.id}`}>
                     <Jackets Data={rsl}></Jackets>
                   </Link>

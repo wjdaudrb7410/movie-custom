@@ -5,33 +5,32 @@ import { IMG_URL_500 } from "../data/url";
 import { Link } from "react-router-dom";
 import { FaStar, FaCalendarAlt } from "react-icons/fa";
 import { Jackets } from "./Jackets";
-
+import "swiper/css";
 const Params = {
-  slidesPerView: 6,
+  slidesPerView: 3,
   spaceBetween: 10,
   breakpoints: {
     640: {
-      slidesPerView: 4,
-    },
-    400: {
       slidesPerView: 3,
+    },
+    450: {
+      slidesPerView: 2,
     },
   },
   loop: "true",
 };
-const Poster_col = {
-  Main: "red",
-};
 const ConWrap = styled.div`
-  margin: 10px 0px 0px 60px;
+  margin-top: 20px;
+  margin-left: 30px;
   width: 100vw;
 `;
 const JackWrap = styled.div`
+  width: 90vw;
   overflow: hidden;
   margin: 20px 0;
-  margin-left: 25px;
 `;
 const TextLine = styled.div`
+  font-family: "NotoSans-KR", sans-serif;
   font-weight: 500;
   font-size: 40px;
   @media screen and (max-width: 900px) {

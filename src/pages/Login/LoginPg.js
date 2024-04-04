@@ -3,6 +3,7 @@ import { HelmetTitle } from "../../components/HelmeTitle";
 import { colors } from "../../components/GlobalStyle";
 import { FaRegUser } from "react-icons/fa";
 import { FaUnlock } from "react-icons/fa";
+import { useForm } from "react-hook-form";
 const LoginWrap = styled.div`
   display: flex;
   justify-content: center;
@@ -41,6 +42,14 @@ const LogBtn = styled.button`
   margin: 20px 30px;
 `;
 export const LoginPg = () => {
+  const {
+    register,
+    handleSumbit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = () => {
+    console.log("로그인됨");
+  };
   return (
     <>
       <HelmetTitle title={"Login"}></HelmetTitle>
@@ -49,7 +58,17 @@ export const LoginPg = () => {
           <LogTitle>로그인</LogTitle>
           <BarWrap>
             <FaRegUser size={40} strokeWidth={5} />
-            <LoginBar type="text" placeholder="아이디"></LoginBar>
+            <LoginBar
+              type="text"
+              placeholder="아이디"
+              {...register("username", {
+                required: "아이디는 필수 입니다.",
+                minLength: {
+                  value: 8,
+                  message: "아이디 최소",
+                },
+              })}
+            />
           </BarWrap>
           <BarWrap>
             <FaUnlock size={40} strokeWidth={5} />
