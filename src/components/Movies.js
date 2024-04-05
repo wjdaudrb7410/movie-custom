@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { IMG_URL_500 } from "../data/url";
 import { Link } from "react-router-dom";
-import { FaStar, FaCalendarAlt } from "react-icons/fa";
 import { Jackets } from "./Jackets";
 import "swiper/css";
 const Params = {
@@ -30,7 +28,6 @@ const JackWrap = styled.div`
   margin: 20px 0;
 `;
 const TextLine = styled.div`
-  font-family: "NotoSans-KR", sans-serif;
   font-weight: 500;
   font-size: 40px;
   @media screen and (max-width: 900px) {

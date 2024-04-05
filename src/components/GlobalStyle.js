@@ -2,8 +2,10 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 export const icon_size = { normal: 15 };
+
 export const colors = {
-  black: "black",
+  red: "red",
+  black: "#666666",
   white: "white",
   point: "#FF6600",
   btnPoint: "#3b3535",
@@ -18,7 +20,7 @@ export const GlobalStyled = createGlobalStyle`
   
       
   *{box-sizing: border-box;
-    font-family: 'NotoSans-KR',sans-serif;}
+    font-family: "NotoSans-KR",sans-serif !important;}
       body{
         
           color: black;
@@ -26,14 +28,13 @@ export const GlobalStyled = createGlobalStyle`
       }
   
       a{
-        font-family: "NotoSans-KR",sans-serif;
           text-decoration: none;
       }
 
       button{
         
         border: 2px solid ${colors.btnPoint};
-        color: ${colors.btnPoint};
+        
         cursor: pointer;
   }
       

@@ -1,48 +1,106 @@
 import styled from "styled-components";
 import { IMG_URL_ } from "../../data/url";
-
+import { FaCalendar, FaPlay, FaStar } from "react-icons/fa";
+import { colors } from "../../components/GlobalStyle";
+import { VscVmRunning } from "react-icons/vsc";
 const ConWrap = styled.div`
   display: flex;
-  flex-direction: column;
-  padding: 120px;
-  align-items: center;
+  flex-direction: row;
+  padding: 120px 120px;
+  align-items: flex-start;
+  justify-content: center;
+  @media screen and (max-width: 800px) {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 `;
 const Desc = styled.div`
-  width: 500px;
-  text-align: center;
-  z-index: 2;
-
-  h2 {
-    font-size: 50px;
-  }
-  div {
-    font-size: 40px;
-  }
+  margin-top: 12px;
+  font-size: 24px;
 `;
 const Poster = styled.div`
-  width: 400px;
+  width: 800px;
   height: 600px;
   background: url(${IMG_URL_}${(props) => props.$bgUrl}) no-repeat center/cover;
+  @media screen and (max-width: 800px) {
+    width: 400px;
+  }
+`;
+const DescWrap = styled.div`
+  display: flex;
+  height: 600px;
+  margin-right: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  @media screen and (max-width: 800px) {
+    align-items: center;
+    text-align: center;
+  }
+`;
+const Title = styled.div`
+  margin-bottom: 15px;
+  font-size: 30px;
+  font-weight: 700;
+`;
+const ComWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  div {
+    font-size: 18px;
+  }
+`;
+const MoreInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  border-radius: 10px;
+  width: 100%;
+  border: 2px solid black;
+  background-color: #e2e2e2;
+  svg {
+    color: ${colors.point};
+  }
+`;
+const MoreProp = styled.div`
+  margin: 10px 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  div {
+    font-weight: 300;
+  }
 `;
 export const Content = ({ Data }) => {
   return (
     <ConWrap>
-      <Poster $bgUrl={Data?.poster_path}></Poster>
-      <Desc>
-        <h2>{Data.title}</h2>
-        <div>
+      <DescWrap>
+        <Title>{Data.title}</Title>
+        <Desc>
           상영시간: {Math.floor(Data.runtime / 60)}시간{Data.runtime % 60}분
-        </div>
-        <div>장르:</div>
-        {Data.genres.map((gen) => (
-          <div key={gen.id}>{gen.name}</div>
-        ))}
-        <div>평점 : {Math.round(Data.vote_average)}점</div>
-        <div>줄거리:{Data.overview.slice(0, 60)}...</div>
-      </Desc>
+        </Desc>
+        <ComWrap>
+          <Desc>제작사:</Desc>
+          {Data.production_companies.map((rsl) => (
+            <Desc key={rsl.id}>{rsl.name}/</Desc>
+          ))}
+        </ComWrap>
+        <Desc>{Data.overview.slice(0, 60)}...</Desc>
+        <MoreInfo>
+          <MoreProp>
+            <FaStar size={40} />
+            <FaCalendar size={40} />
+            <VscVmRunning size={40} />
+          </MoreProp>
+          <MoreProp>
+            <Desc>{Math.round(Data.vote_average)}점</Desc>
+            <Desc>{Data.release_date.replace(/-/g, ".")}</Desc>
+            <Desc>{Data.runtime}m</Desc>
+          </MoreProp>
+        </MoreInfo>
+      </DescWrap>
+      <Poster $bgUrl={Data?.poster_path}></Poster>
     </ConWrap>
   );
 };
-{
-  /*  */
-}

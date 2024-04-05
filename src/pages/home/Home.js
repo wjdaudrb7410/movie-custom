@@ -43,11 +43,11 @@ export const Home = () => {
 
   return (
     <>
+      <HelmetTitle title={"Home"} />
       {loading ? (
         data && (
           <>
             <MainSector>
-              <HelmetTitle title={"Home"} />
               <MainBanner Data={data} />
               <Movies Data={TrData.results} Texts={"평점이 높은 영화"}></Movies>
               <Movies Data={PopData.results} Texts={"인기 영화"}></Movies>

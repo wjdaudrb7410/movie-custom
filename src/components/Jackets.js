@@ -37,7 +37,6 @@ const Cover = styled.div`
   }
 `;
 const Info = styled.div`
-  font-family: "NotoSans-KR";
   font-weight: 300;
   font-size: 16px;
   margin: 0px 10px;
@@ -61,21 +60,24 @@ const Titles = styled.div`
 `;
 export const Jackets = ({ Data }) => {
   return (
-    <Jacket $bgUrl={Data.poster_path}>
-      <Cover>
-        <Titles>{Data.title}</Titles>
-        <InfoCover>
-          <Info>
-            <FaStar size={icon_size.normal} /> : {Math.round(Data.vote_average)}
-          </Info>
-          <Info>
-            <FaCalendarAlt size={icon_size.normal} /> : {Data.release_date}
-          </Info>
-          <Info>
-            <FaHeart size={icon_size.normal} /> : {Data.vote_count}
-          </Info>
-        </InfoCover>
-      </Cover>
-    </Jacket>
+    <>
+      <Jacket $bgUrl={Data?.poster_path}>
+        <Cover>
+          <Titles>{Data?.title}</Titles>
+          <InfoCover>
+            <Info>
+              <FaStar size={icon_size.normal} /> :{" "}
+              {Math.round(Data?.vote_average)}
+            </Info>
+            <Info>
+              <FaCalendarAlt size={icon_size.normal} /> : {Data?.release_date}
+            </Info>
+            <Info>
+              <FaHeart size={icon_size.normal} /> : {Data?.vote_count}
+            </Info>
+          </InfoCover>
+        </Cover>
+      </Jacket>
+    </>
   );
 };

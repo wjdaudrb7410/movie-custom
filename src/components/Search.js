@@ -21,9 +21,10 @@ const ConWrap = styled.div`
   margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  row-gap: 30px;
+  row-gap: 220px;
   column-gap: 10px;
   @media screen and (max-width: 500px) {
+    row-gap: 20px;
     grid-template-columns: repeat(2, 1fr);
   }
 `;

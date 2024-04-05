@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { routes } from "../routes";
 import { colors } from "./GlobalStyle";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 const HeaderWrap = styled.header`
   width: 100vw;
   height: 60px;
@@ -34,12 +34,12 @@ const MainTitle = styled.div`
 `;
 const HeaderBtn = styled.button`
   background-color: transparent;
-  border: 0 solid white;
+  border: 0;
   height: 100%;
   font-size: 18px;
   padding: 7px 50px;
   a {
-    color: ${colors.white};
+    color: ${colors.black};
   }
   @media screen and (max-width: 450px) {
     padding: 0px 10px;
@@ -47,6 +47,7 @@ const HeaderBtn = styled.button`
 `;
 export const Header = () => {
   const Headref = useRef();
+
   const scrollHandler = () => {
     const pageY = window.scrollY;
     const current = Headref.current;
@@ -80,7 +81,3 @@ export const Header = () => {
     </HeaderWrap>
   );
 };
-
-{
-  /*  */
-}

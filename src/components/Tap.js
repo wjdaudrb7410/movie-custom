@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import styled from "styled-components";
 
-import { IMG_URL_500 } from "../data/url";
 import { MovieEle } from "./MovEle";
 const CatSection = styled.div`
   display: flex;
