@@ -47,3 +47,7 @@ export const MovDetail = (id) => {
   const detailUrl = Base_url + `movie/${id}?${lang}`;
   return fetch(detailUrl, options).then((res) => res.json());
 };
+export const Movid = (id) => {
+  const detailUrl = Base_url + `movie/${id}/videos?${lang}`;
+  return fetch(detailUrl, options).then((res) => res.json());
+};
