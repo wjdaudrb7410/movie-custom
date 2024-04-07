@@ -92,7 +92,6 @@ export const Content = ({ Data, Vids }) => {
           <YouTube
             videoId={Vids}
             opts={{
-              width: "100%",
               height: "300px",
             }}
             onReady={(e) => {
