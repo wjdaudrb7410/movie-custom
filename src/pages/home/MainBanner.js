@@ -1,10 +1,8 @@
-import { useInterval } from "../../function/useInterval";
 import { IMG_URL_ } from "../../data/url";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { Button } from "../../components/Button";
-import { Link, useParams } from "react-router-dom";
 const Bg = styled.div`
   text-align: left;
   position: relative;

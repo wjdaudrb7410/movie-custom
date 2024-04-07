@@ -37,8 +37,10 @@ export const Popular = () => {
 export const Upcoming = () => {
   return fetch(url(Service.Upcoming), options).then((res) => res.json());
 };
-export const SearchThing = (Keyword) => {
-  const searchUrl = Base_url + `${Service.Search}${Keyword}&${lang}`;
+export const SearchThing = (Keyword, page = 1) => {
+  const searchUrl =
+    Base_url + `${Service.Search}${Keyword}&${lang}&page=${page}`;
+  console.log(searchUrl);
   return fetch(searchUrl, options).then((res) => res.json());
 };
 export const MovDetail = (id) => {

@@ -1,7 +1,7 @@
 import { FaCalendarAlt, FaHeart, FaStar } from "react-icons/fa";
 import styled from "styled-components";
 import { colors, icon_size } from "./GlobalStyle";
-import { IMG_URL_500 } from "../data/url";
+import { IMG_URL_500, No_URL } from "../data/url";
 
 const Jacket = styled.div`
   display: flex;
@@ -9,12 +9,12 @@ const Jacket = styled.div`
   justify-content: end;
   border-radius: 10px;
   width: 100%;
-  height: 500px;
+  height: 400px;
   overflow: hidden;
   background: url(${IMG_URL_500}${(props) => props.$bgUrl}) no-repeat
     center/cover;
   @media screen and (max-width: 900px) {
-    height: 400px;
+    height: 300px;
   }
   @media screen and (max-width: 500px) {
     height: 200px;
@@ -24,7 +24,6 @@ const Cover = styled.div`
   text-align: left;
   display: flex;
   flex-direction: column;
-  line-height: 2cm;
   align-items: center;
   justify-content: space-around;
   width: 100%;
@@ -33,16 +32,13 @@ const Cover = styled.div`
   backdrop-filter: blur(10px);
   div {
     color: ${colors.white};
-    margin-bottom: 2px;
+    margin-bottom: -10px;
   }
 `;
 const Info = styled.div`
   font-weight: 300;
-  font-size: 16px;
-  margin: 0px 10px;
-  @media screen and (max-width: 900px) {
-    font-size: 10px;
-  }
+  font-size: 12px;
+  margin: -20px 10px;
 `;
 const InfoCover = styled.div`
   display: flex;
@@ -53,7 +49,6 @@ const Titles = styled.div`
   font-size: 18px;
   font-weight: 500;
   color: ${colors.white};
-  z-index: 2;
   @media screen and (max-width: 900px) {
     font-size: 12px;
   }

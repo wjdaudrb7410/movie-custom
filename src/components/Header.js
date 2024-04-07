@@ -15,9 +15,9 @@ const HeaderWrap = styled.header`
   bottom: 0;
   z-index: 10;
   background-color: transparent;
+  align-items: center;
 `;
 const MainTitle = styled.div`
-  margin-top: 8px;
   margin-left: 30px;
   font-size: 36px;
   font-weight: 400;
