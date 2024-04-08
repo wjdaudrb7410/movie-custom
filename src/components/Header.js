@@ -51,6 +51,10 @@ export const Header = () => {
   const [islog, setLog] = useState(false);
   const Headref = useRef();
   useEffect(() => {
+    setCookie("username", "", { path: "/", maxAge: 0 });
+    setCookie("password", "", { path: "/", maxAge: 0 });
+  }, []);
+  useEffect(() => {
     if (cookies.username) {
       setLog(true);
     } else {
