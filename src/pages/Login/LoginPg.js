@@ -5,6 +5,7 @@ import { FaRegUser } from "react-icons/fa";
 import { FaUnlock } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 const Pattern = {
   id: /^[a-zA-Z][0-9a-zA-Z]/,
   password: /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9])./,
@@ -59,16 +60,19 @@ const ErrMsg = styled.div`
   color: ${colors.red};
 `;
 export const LoginPg = () => {
+  const [cookies, setCookie] = useCookies(["username", "password"]);
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm();
-  const onSubmit = () => {
+  const onSubmit = (data) => {
+    console.log(data);
+    setCookie("username", data.username, { path: "/", maxAge: 100000 });
+    setCookie("password", data.password, { path: "/", maxAge: 100000 });
     navigate("/");
   };
-
   return (
     <>
       <HelmetTitle title={"Login"}></HelmetTitle>

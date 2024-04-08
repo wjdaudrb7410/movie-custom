@@ -1,7 +1,7 @@
 import { FaCalendarAlt, FaHeart, FaStar } from "react-icons/fa";
 import styled from "styled-components";
 import { colors, icon_size } from "./GlobalStyle";
-import { IMG_URL_500, No_URL } from "../data/url";
+import { IMG_URL_500 } from "../data/url";
 
 const Jacket = styled.div`
   display: flex;
@@ -13,12 +13,14 @@ const Jacket = styled.div`
   overflow: hidden;
   background: url(${IMG_URL_500}${(props) => props.$bgUrl}) no-repeat
     center/cover;
+  background-color: black;
   @media screen and (max-width: 900px) {
     height: 300px;
   }
   @media screen and (max-width: 500px) {
     height: 200px;
   }
+  z-index: -2;
 `;
 const Cover = styled.div`
   text-align: left;
@@ -57,6 +59,22 @@ export const Jackets = ({ Data }) => {
   return (
     <>
       <Jacket $bgUrl={Data?.poster_path}>
+        {Data.poster_path ? (
+          <></>
+        ) : (
+          <div
+            style={{
+              textAlign: "center",
+              lineHeight: "3cm",
+              color: "white",
+              zIndex: 1,
+              fontSize: "18px",
+            }}
+          >
+            NO IMAGE
+          </div>
+        )}
+
         <Cover>
           <Titles>{Data?.title}</Titles>
           <InfoCover>

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { routes } from "../routes";
 import { colors } from "./GlobalStyle";
 import { useEffect, useRef, useState } from "react";
+import { useCookies } from "react-cookie";
 const HeaderWrap = styled.header`
   width: 100vw;
   height: 60px;
@@ -46,8 +47,16 @@ const HeaderBtn = styled.button`
   }
 `;
 export const Header = () => {
+  const [cookies, setCookie] = useCookies(["username"]);
+  const [islog, setLog] = useState(false);
   const Headref = useRef();
-
+  useEffect(() => {
+    if (cookies.username) {
+      setLog(true);
+    } else {
+      setLog(false);
+    }
+  }, [cookies]);
   const scrollHandler = () => {
     const pageY = window.scrollY;
     const current = Headref.current;
@@ -74,9 +83,19 @@ export const Header = () => {
         <HeaderBtn>
           <Link to={"/search"}>검색</Link>
         </HeaderBtn>
-        <HeaderBtn>
-          <Link to={"/login"}>로그인</Link>
-        </HeaderBtn>
+        {islog ? (
+          <HeaderBtn
+            onClick={() => {
+              setCookie("username", "");
+            }}
+          >
+            <Link to={"/"}>로그아웃</Link>
+          </HeaderBtn>
+        ) : (
+          <HeaderBtn>
+            <Link to={"/login"}>로그인</Link>
+          </HeaderBtn>
+        )}
       </div>
     </HeaderWrap>
   );

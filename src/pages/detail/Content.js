@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { IMG_URL_ } from "../../data/url";
-import { FaCalendar, FaPlay, FaStar } from "react-icons/fa";
+import { FaCalendar, FaStar } from "react-icons/fa";
 import { colors } from "../../components/GlobalStyle";
 import { VscVmRunning } from "react-icons/vsc";
 import YouTube from "react-youtube";
